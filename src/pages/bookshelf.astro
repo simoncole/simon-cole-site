@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const toBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
+const books = [
+  {
+    rank: 1,
+    title: "National Audubon Society Field Guide to North American Mushrooms",
+    author: "Gary Lincoff",
+    cover: "https://covers.openlibrary.org/b/id/253711-L.jpg",
+  },
+  {
+    rank: 2,
+    title: "The Stranger",
+    author: "Albert Camus",
+    cover: "https://covers.openlibrary.org/b/id/13151269-L.jpg",
+    wiki: "https://en.wikipedia.org/wiki/The_Stranger_(Camus_novel)",
+  },
+  {
+    rank: 3,
+    title: "Siddhartha",
+    author: "Herman Hesse",
+    cover: "https://covers.openlibrary.org/b/id/6562535-L.jpg",
+    wiki: "https://en.wikipedia.org/wiki/Siddhartha_(novel)",
+  },
+  {
+    rank: 4,
+    title: "The Sound and the Fury",
+    author: "William Faulkner",
+    cover: "https://covers.openlibrary.org/b/id/8292212-L.jpg",
+    wiki: "https://en.wikipedia.org/wiki/The_Sound_and_the_Fury",
+  },
+  {
+    rank: 5,
+    title: "Then I Am Myself the World",
+    author: "Christof Koch",
+    cover: "https://books.google.com/books/content?id=wuXUEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  },
+  {
+    rank: 6,
+    title: "The Idiot",
+    author: "Fyodor Dostoevsky",
+    cover: "https://covers.openlibrary.org/b/id/12371520-L.jpg",
+    wiki: "https://en.wikipedia.org/wiki/The_Idiot",
+  },
+  {
+    rank: 7,
+    title: "The Code Breaker",
+    author: "Walter Isaacson",
+    cover: "https://covers.openlibrary.org/b/isbn/9781982115852-L.jpg",
+    wiki: "https://en.wikipedia.org/wiki/The_Code_Breaker",
+  },
+  {
+    rank: 8,
+    title: "The Bhagavad Gita",
+    author: "Eknath Easwaran (translation)",
+    cover: "https://covers.openlibrary.org/b/id/1955084-L.jpg",
+    wiki: "https://en.wikipedia.org/wiki/Bhagavad_Gita",
+  },
+  {
+    rank: 9,
+    title: "The Master of Go",
+    author: "Yasunari Kawabata",
+    cover: "https://covers.openlibrary.org/b/id/421174-L.jpg",
+    wiki: "https://en.wikipedia.org/wiki/The_Master_of_Go",
+  },
+  {
+    rank: 10,
+    title: "In Search of Memory",
+    author: "Eric Kandel",
+    cover: "https://covers.openlibrary.org/b/id/251275-L.jpg",
+  },
+];
+---
+
+<BaseLayout title="Bookshelf" currentPath="/bookshelf/">
+  <section class="stack">
+    <p>Reading is very important to me. It has been indirectly responsible for many of the best things in my life.</p>
+    <p>I keep a bookshelf in my apartment in St. Louis where I rank my books in descending order.</p>
+    <p>Here is my current top 10:</p>
+  </section>
+
+  <section class="books-grid">
+    {
+      books.map((book) => (
+        <article class="book-card">
+          {
+            book.wiki ? (
+              <a class="book-cover-link" href={book.wiki}>
+                <img
+                  class="book-cover"
+                  src={book.cover ?? toBase("/book-placeholder.svg")}
+                  alt={`Cover of ${book.title}`}
+                  loading="lazy"
+                />
+              </a>
+            ) : (
+              <img
+                class="book-cover"
+                src={book.cover ?? toBase("/book-placeholder.svg")}
+                alt={`Cover of ${book.title}`}
+                loading="lazy"
+              />
+            )
+          }
+          <p class="book-rank">#{book.rank}</p>
+          <h2 class="book-title">{book.title}</h2>
+          <p class="book-author">{book.author}</p>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

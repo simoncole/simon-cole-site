@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Research" currentPath="/research/">
+  <section class="stack">
+    <h1 class="research-title">Chromatin Loops as Master Regulators of Cell State</h1>
+  </section>
+
+  <br />
+
+  <article class="panel prose stack research-panel">
+      <p>
+        If you were to stretch out all the DNA in just a single one of our cells end-to-end
+        it would span close to 2 meters in length. If you took all the DNA in all the cells
+        of your body and concatenated it together, it would easily stretch to the sun and
+        back. Amazingly, all of this DNA in one of our cells is crammed into a nucleus
+        smaller than the head of pin. Perhaps even more amazingly, the pattern in which it is
+        crammed is not some stochastic, arbitrary, process; it is a highly specific and
+        functionally relevant one<sup>1</sup>!
+      </p>
+
+      <p>
+        Advances in molecular and computational technologies have enabled the query of
+        higher-order chromatin architecture at unprecedented resolution and scale<sup>2</sup>.
+        The Cremins laboratory, where I am now, has employed Hi-C and related methods to
+        discover that the mammalian genome folds into 10,000-60,000 chromatin loops<sup>3</sup>.
+        Loops serve as integrators bringing multiple distal regulatory elements into contact
+        with target genes to structurally influence transcription<sup>4</sup>. They form
+        mechanistically through the processive motion of cohesin along chromatin until it
+        stalls at binding sites for the architectural protein CTCF<sup>5</sup>. This extrudes
+        out the intervening DNA and demarcates the search space of enhancers for their target
+        promoters. Initial studies have shown that promoter-enhancer loops markedly reconfigure
+        in development, disease, and in response to genetic perturbations<sup>6</sup>.
+      </p>
+
+      <p>
+        The 3D genome field was sent into crisis in 2017 when Rao et al. published Cohesin
+        Loss Eliminates All Loops<sup>7</sup>, in which the authors perform a cohesin degron and
+        eliminate nearly all cohesin mediated loops. To the field’s surprise, the effects on
+        gene expression as measured with bulk RNA-seq were modest. This rapidly inspired a
+        vocal minority sentiment purporting the view that “loops don’t matter for gene
+        expression”. I believe there is a kernel of truth here with respect to the dividing
+        cell lines used in the paper. However, it is clear to me now that the <strong>dynamics</strong> of
+        chromatin looping are essential for the establishment of <strong>new</strong> cell state,
+        particularly in <strong>post-mitotic neurons</strong>.
+      </p>
+
+      <p>
+        Recent live-cell imaging work<sup>8,9</sup> has shown that loops are a highly dynamic and, in
+        fact, transient structure. Therefore, the features we detect in a bulk Hi-C contact
+        frequency heatmap, should <strong>not</strong> be viewed as static persistent truths, but instead
+        for what they are: statistical deviations above the expected contact frequency of
+        experimental and biological noise. That being said, this reality does not preclude us
+        from deriving highly relevant biological insight about the state of a cell from the
+        loops that we call. Under this model, loops are able to be used dynamically as
+        <strong>physical integrators of transcription factors</strong> (TFs) which bind to distal enhancers
+        and affect target promoters of genes. Some of these TFs increase transcription, some
+        decrease it, some have a systems effect we don’t understand. Needless to say, this complexity makes
+        analysis tricky. It necessitates the development of <strong>advanced computational tooling</strong>
+        capable of learning a sufficiently robust representation of the physical organization
+        of the genome, and its regulatory elements, that enables in-silico perturbation
+        studies elucidating novel roles of TF combinations.
+      </p>
+
+      <p>
+        Loops happens frequently, on and off, but for a healthy cell, they happen in a
+        predictable manner. For an unhealthy cell, be it cancerous, aged, or carrier of a
+        pathogenic mutation, looping has been shown to go awry<sup>10</sup>.
+      </p>
+
+      <p>
+        In my current work at the Cremins lab<sup>11</sup>, I study the loop-miswiring effects of the
+        Familial Alzheimer’s Disease (FAD) associated APP Swedish mutation. Inspired by
+        findings that this mutation markedly perturbs chromatin looping genome-wide, without changing
+        CTCF, we are investigating the role of the DLX1 and LHX2 homeobox domain
+        TFs in looping and cell state.
+      </p>
+
+      <p>
+        With assistance from others, I have developed novel computational tooling to detect
+        chromatin loops in Single-Nucleus Methyl 3C Sequencing data<sup>12</sup>(snm3C-seq).
+        Snm3C-seq is a relatively new assay which jointly models chromatin contacts and DNA
+        methylation at the single cell level. It is especially useful for neural tissue where
+        there is a mixture of cell types. We are able to computationally cluster cells by their methylation
+        profiles and then collapse back their 3C data to elucidate distinct chromatin
+        profiles for distinct neural cell types.
+      </p>
+
+      <p>
+        In his 2024 Nature Reviews Genetics article<sup>13</sup>, Dr. Jian Ma argues that the study of
+        the 3D genome represents the most extensive use of advanced computational methods in
+        cell biology. I tend to agree.
+      </p>
+
+      <h2>References</h2>
+      <ol>
+        <li>Misteli et al (2007) Cell.</li>
+        <li>Dekker et al (2013) Nat Rev Genet.</li>
+        <li>Philips-Cremins et al. (2013) Cell.</li>
+        <li>Rao et al (2014) Cell.</li>
+        <li>Fudenberg et al (2016) Cell Rep.</li>
+        <li>Narendra et al (2015) Science.</li>
+        <li>Rao et al (2017) Cell.</li>
+        <li>Sabaté et al (2025) Nat Genet.</li>
+        <li>Gabriele et al (2022) Science.</li>
+        <li>Lupiáñez et al (2015) Cell.</li>
+        <li>Chandrashekar et al (2024) bioRxiv.</li>
+        <li>Liu et al (2023) Nature.</li>
+        <li>Zhang et al (2024) Nat Rev Genet.</li>
+      </ol>
+  </article>
+</BaseLayout>

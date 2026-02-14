@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const toBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+---
+
+<BaseLayout title="Simon Cole" currentPath="/">
+  <section class="stack">
+    <h1>I'm Simon Cole</h1>
+  </section>
+
+  <section class="panel stack profile-panel">
+    <img class="home-headshot" src={toBase("/headshot-square.jpg")} alt="Headshot of Simon Cole" />
+    <p>
+      I'm a <span class="term-emphasis">computational scientist</span> in the
+      SEEDS-Bridge postbaccalaureate program at the
+      <span class="term-emphasis">Jennifer Philips-Cremins Laboratory</span> for
+      Chromatin and Spatial Neurobiology at Washington University in St. Louis.
+    </p>
+    <p>
+      I'm broadly interested in developing and applying analytical and predictive
+      computational methods which utilize multi-omics data to elucidate latent
+      <span class="term-emphasis">epigenetic</span> dysregulation in
+      <span class="term-emphasis">aging</span> and age-related disease.
+      <a href={toBase("/research/")}>Read more -&gt;</a>
+    </p>
+    <p>
+      I'm currently specifically interested in homeobox domain transcription factors
+      <span class="term-emphasis"> DLX1 and LHX2 </span> and their role in the
+      miswiring of promoter to enhancer
+      <span class="term-emphasis">chromatin loops</span> in
+      <a href="https://www.biorxiv.org/content/10.1101/2024.02.27.582395v1.full">familial Alzheimer's Disease</a> prior to the accumulation of Aβ and PTau.
+    </p>
+    <p>
+      I'm from a small town in North Florida that is home to the
+      <a href="https://en.wikipedia.org/wiki/Wakulla_Springs">world's largest freshwater spring</a>
+      and, potentially, a <a href="https://wakullavolcano.vashti.net/">volcano</a>.
+    </p>
+    <p>
+      I'm known to enjoy reading, writing, running, programming, and thinking. Ideally
+      all at once.
+    </p>
+  </section>
+
+  <section>
+    <article class="panel stack">
+      <br />
+      <p>The following are some of the high-level scientific questions that keep me awake at night:</p>
+      <ol class="question-list">
+        <li>
+          How does the genome encode the the wiring specificity of the neural connectome?
+        </li>
+        <li>
+          How do chromatin loops and their associated TFs control cell state? What
+          happens when this goes awry?
+        </li>
+        <li>
+          How can we make neurons in artificial neural networks work more like real
+          neurons in the human brain?
+        </li>
+        <li>
+          Has bio ML taken to heart Richard Sutton's bitter lesson?
+        </li>
+        <li>
+          Can the human body survive the radiation from a trip to Mars?
+        </li>
+        <li>
+          Can we solve aging?
+        </li>
+      </ol>
+    </article>
+  </section>
+</BaseLayout>
