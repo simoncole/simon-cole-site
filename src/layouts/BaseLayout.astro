@@ -13,8 +13,6 @@ const {
   currentPath = "/",
 } = Astro.props;
 
-const hasDescription = description.trim().length > 0;
-
 const nav = [
   { href: "/", label: "Home" },
   { href: "/research/", label: "Research" },
@@ -30,7 +28,12 @@ const toBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {hasDescription && <meta name="description" content={description} />}
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
     <title>{pageTitle}</title>
     <link rel="icon" type="image/svg+xml" href={toBase("/favicon.svg")} />
   </head>
