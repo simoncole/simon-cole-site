@@ -9,9 +9,11 @@ interface Props {
 
 const {
   title,
-  description = "Simple writing-heavy personal website.",
+  description = "",
   currentPath = "/",
 } = Astro.props;
+
+const hasDescription = description.trim().length > 0;
 
 const nav = [
   { href: "/", label: "Home" },
@@ -28,7 +30,7 @@ const toBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    {hasDescription && <meta name="description" content={description} />}
     <title>{pageTitle}</title>
     <link rel="icon" type="image/svg+xml" href={toBase("/favicon.svg")} />
   </head>
